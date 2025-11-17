@@ -1,8 +1,8 @@
 <?php
 print_r($_POST);
 include_once("connection.php"); // Equivalent of import
-$role=1
-$username="bob"
+$role=1;
+$username="bob";
 try{
     $stmt=$conn->prepare("INSERT INTO tblusers
     (UserID, Username, Surname, Forename, Password, Year, Balance, Role)
@@ -16,11 +16,12 @@ try{
     $stmt->bindParam(":Balance", $_POST["balance"]);
     $stmt->bindParam(":Role", $role);
     $stmt->bindParam(":Username", $username);
+    $stmt->execute();
 }
 catch(PDOException $e)
 {
-    echo("error: " ,$e->getMessage());
+    echo("error: " . $e->getMessage());
 
 }
-$stmt->execute();
+
 ?>
