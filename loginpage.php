@@ -1,8 +1,8 @@
 <?php
 //header("location: food.php");
-    print_r($POST);
-    array_map("htmlspecialchars", $_POST); //inputs cannot inject html
-    include_once("connection.php");//equivalent of import
+print_r($_POST);
+array_map("htmlspecialchars", $_POST); //inputs cannot inject html
+include_once("connection.php");//equivalent of import
 
 try{
     $stmt=$conn->prepare("SELECT * FROM tblusers WHERE Username=:Username;");
