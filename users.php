@@ -5,15 +5,27 @@
     </head> 
     <body>
         <form action="addpupil.php" method="post">
-            Surname:<input type="text" name="surname"><br>
-            Forename:<input type="text" name="forename"><br>
-            Password:<input type="password" name="password"><br>
-            Year:<input type="number" name="year"><br>
-            Initial Balance:<input type="number" name="balance"><br>
-            Role:<br>
-            <input type="radio" name="role" value="pupil" checked> Pupil<br>
-            <input type="radio" name="role" value="admin"> Administrator<br>
-            <input type="submit" value="Add User"><br>
-        </form>
-    </body>
+        Surname:<input type="text" name="surname"><br>
+        Forename:<input type="text" name="forename"><br>
+        Password:<input type="password" name="password"><br>
+        Year:<input type="number" name="year"><br>
+        Initial Balance :<input type="number" name="balance"><br>
+        Role:<br>
+        <input type="radio" name="role" value="pupil" checked> Pupil<br>
+        <input type="radio" name="role" value="admin"> Administrator<br>
+        <input type="submit" value="Add User"><br>
+    </form> 
+            <?php
+        include_once("connection.php");
+        $stmt=$conn->prepare("SELECT * FROM tblusers");
+        $stmt->execute();
+        while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+        {
+            //print_r($row);
+            echo($row["Forename"]." ".$row["Surname"]);
+            echo("<br>");
+        }
+    ?>
+        
+</body>
 </html>

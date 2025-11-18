@@ -1,0 +1,37 @@
+<?php
+//header("location: food.php");
+    print_r($POST);
+    array_map("htmlspecialchars", $_POST); //inputs cannot inject html
+    include_once("connection.php");//equivalent of import
+
+try{
+    $stmt=$conn->prepare("SELECT * FROM tblusers WHERE Username=:Username;");
+    $stmt->bindParam(":Username", $_POST["username"]);
+    $stmt->execute();
+    
+    if ($stmt->rowCount() == 0) {
+        echo("Invalid Username.");
+    }
+    else{
+        //check password
+        while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+        {
+            print_r($row);
+            if($_POST["password"]==$row["Password"]){
+                echo("correct password");
+            }
+            else{
+                echo("incorrect password");
+            }
+            //echo($row["Name"]." ".$row["Description"]." ".$row["Price"]);
+            echo("<br>");
+        }
+
+        echo("ok");
+    }
+}
+catch(PDOException $e)
+{
+    echo("error: " . $e->getMessage());
+}
+?>

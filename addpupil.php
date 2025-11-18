@@ -1,14 +1,17 @@
 <?php
-header("location:users.php")
+header("location: users.php");
 print_r($_POST);
-include_once("connection.php"); // Equivalent of import
-if ($_POST["role"]=="admin"){
+include_once("connection.php");//import equivalent!
+if($_POST["role"]=="admin"){
     $role=1;
-}
-else{
+#else if not elif
+}else{
     $role=0;
 }
-$username=$_POST["forename"].".".$_POST["forename"][0];
+//$role=1;
+$username=$_POST["surname"].".".$_POST["forename"][0];
+echo($username);
+//$username="bob";
 try{
     $stmt=$conn->prepare("INSERT INTO tblusers
     (UserID, Username, Surname, Forename, Password, Year, Balance, Role)
@@ -29,5 +32,4 @@ catch(PDOException $e)
     echo("error: " . $e->getMessage());
 
 }
-
 ?>
