@@ -5,8 +5,8 @@
     </head> 
     <body>
         <form action="addpupil.php" method="post">
-        Surname:<input type="text" name="surname"><br>
         Forename:<input type="text" name="forename"><br>
+        Surname:<input type="text" name="surname"><br>
         Password:<input type="password" name="password"><br>
         Year:<input type="number" name="year"><br>
         Initial Balance :<input type="number" name="balance"><br>
