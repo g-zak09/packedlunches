@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["accesslevel"]) || $_SESSION["accesslevel"] != "ADMIN") {
+/*if (!isset($_SESSION["accesslevel"]) || $_SESSION["accesslevel"] != "ADMIN") {
     header("Location: login.php");
     exit();
-}
+}*/
 
 echo("Hello ".$_SESSION["firstname"]);
 ?>
