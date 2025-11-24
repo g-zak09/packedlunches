@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if (!isset($_SESSION["accesslevel"]) || $_SESSION["accesslevel"] != "ADMIN") {
+    header("Location: login.php");
+    exit();
+}
+
 echo("Hello ".$_SESSION["firstname"]);
 ?>
 <!DOCTYPE HTML>
@@ -17,9 +23,8 @@ echo("Hello ".$_SESSION["firstname"]);
             <option value="snack">Snack</option>
             <option value="drink">Drink</option>
             <option value="sandwich">Sandwich</option>
-            
-          </select>
-          <br>
+        </select>
+        <br>
         Price :<input type="text" name="price"><br>
      
         <input type="submit" value="Add Food">
@@ -30,11 +35,9 @@ echo("Hello ".$_SESSION["firstname"]);
         $stmt->execute();
         while($row=$stmt->fetch(PDO::FETCH_ASSOC))
         {
-            //print_r($row);
             echo($row["Name"]." ".$row["Description"]." ".$row["Price"]);
             echo("<br>");
         }
     ?>
-
 </body>
 </html>
