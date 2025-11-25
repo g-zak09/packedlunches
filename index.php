@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if(isset($_SESSION["loggedinuser"])){
+        echo("Hello ".$_SESSION["firstname"]);
+    }
+    else{
+        echo("Not logged in");
+    }
+?>
 <!DOCTYPE HTML> 
 <html> 
     <head> 
@@ -9,6 +18,8 @@
         <a href="food.php"> Add food</a><br>
         <a href="login.php"> Login</a><br>
         <a href="logout.php"> Logout</a><br>
+        <a href="choosefood.php"> Choose food</a><br>
+
 
 
     </body>

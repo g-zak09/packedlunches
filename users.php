@@ -14,7 +14,7 @@
         <input type="radio" name="role" value="pupil" checked> Pupil<br>
         <input type="radio" name="role" value="admin"> Administrator<br>
         <input type="submit" value="Add User"><br>
-    </form> 
+    </form>
             <?php
         include_once("connection.php");
         $stmt=$conn->prepare("SELECT * FROM tblusers");

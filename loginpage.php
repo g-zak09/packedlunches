@@ -1,6 +1,6 @@
 <?php
 session_start();//to allow session variables
-//header("location: food.php");
+header("location: food.php");
 print_r($_POST);
 array_map("htmlspecialchars", $_POST); //inputs cannot inject html
 include_once("connection.php");//equivalent of import
@@ -22,9 +22,11 @@ try{
             $attempt=$_POST["password"];
 
             if(password_verify($attempt,$hashed)){
-                echo("Correct password");
+                echo("Correct password, login successful");
                 $_SESSION["firstname"]=$row["Forename"];//session variable, global, lasts until browser closed
                 $_SESSION["loggedinuser"]=$row["UserID"];
+                $_SESSION["admin"]=$row["Role"];
+
                 
             }
             else{
