@@ -14,6 +14,24 @@
     </head> 
     <body> 
         <h1>Orders Page</h1>
+        <?php
+        session_start();
+        include_once("connection.php");
+        foreach ($_SESSION["lunchbasket"] as &$item){
+            while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+                print_r($_SESSION["Lunchbasket"]);
+                echo("<br>"); 
+        }
+        }
+        $stmt=$conn->prepare("SELECT * FROM tblfood ORDER BY Category, Name");
+        $stmt->bindParam(":fid"),$item["foodid"];
+        $stmt->execute();
+        while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+            
+        }
+        print_r($_SESSION["Lunchbasket"]);
+        echo("<br>");
+        ?>
         Select category
         Show foods in that category
         <?php
